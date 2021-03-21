@@ -1,0 +1,13 @@
+from django import forms
+
+class EditEntry(forms.Form):
+    # title = forms.CharField()
+    content = forms.CharField(min_length=1, label="Content", widget=forms.Textarea)
+
+class CreateEntry(forms.Form):
+    title = forms.CharField(max_length=50, min_length=1, label="Title")
+    content = forms.CharField(min_length=1, label="Content", widget=forms.Textarea)
+
+
+class SearchEntry(forms.Form):
+    search = forms.CharField(max_length=50, min_length=1)

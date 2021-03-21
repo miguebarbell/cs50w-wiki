@@ -1,0 +1,5 @@
+
+kpython:S1763"GDelete this unreachable code or refactor the code to make it reachable.(”ÄÌÑúÿÿÿÿ8ö˜Ò‡ş.
+Bpython:S125"Remove this commented out code.(Ç¹üÚşÿÿÿÿ8 Å¼ˆş.
+Opython:S5806!"+Rename this variable; it shadows a builtin.(›çßÿÿÿÿÿ8×¡ô‡ş.
+qpython:S1226"MIntroduce a new variable or use its initial value before reassigning 'entry'.(ã¿íîıÿÿÿÿ8ú‚½ˆş.
