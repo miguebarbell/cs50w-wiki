@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import markdown2
 from . import util
 from .forms import EditEntry, CreateEntry
@@ -32,11 +32,16 @@ def index(request):
             list = util.list_entries()
             results = []
             for i in list:
-                if entry.lower() in i.lower():
+                if entry.lower() == i.lower():
+                    print(f'founded {i}')
+
+                    return redirect(f'/wiki/{i}')
+                    # break
+                elif entry.lower() in i.lower():
                     results.append(i)
             if not results:
                 return render(request, "encyclopedia/not_found.html", {"entry": entry})
-            print(results)
+            # print(results)
             return render(request, "encyclopedia/search.html", {"results": results, "title": entry})
 
     return render(request, "encyclopedia/index.html", {
@@ -46,7 +51,7 @@ def index(request):
 
 def show(request, entry):
     if request.method == "POST":
-        if request.POST.get('q') == None:
+        if request.POST.get('q') is None:
             return render(request, "encyclopedia/index.html", {
                 "entries": util.list_entries()
             })
@@ -56,12 +61,18 @@ def show(request, entry):
             list = util.list_entries()
             results = []
             for i in list:
-                if entri.lower() in i.lower():
+                if entri.lower() == i.lower():
+                    print(f'founded {i}')
+                    return redirect(f'/wiki/{i}')
+                    # break
+                elif entri.lower() in i.lower():
                     results.append(i)
             if results == []:
                 return render(request, "encyclopedia/not_found.html", {"entry": entri})
         return render(request, "encyclopedia/search.html", {"results": results, "title": entri})
     article = util.get_entry(entry)
+    print(entry)
+    print(f'article: {entry}')
     if article is None:
         return render(request, "encyclopedia/not_found.html", {"entry": entry, "title": entry})
     else:
@@ -69,19 +80,15 @@ def show(request, entry):
         return render(request, "encyclopedia/show.html", {"entry": article_html, "title": entry})
 
 
-def save(request):
+def save(request, entry):
     if request.method == 'POST':
-        already_exists = False
         title = request.POST["title"]
         for entri in util.list_entries():
             if title.lower() == entri.lower():
-                already_exists = True
-        if already_exists == True:
-            return render(request, "encyclopedia/alreadyexists.html", {"entry": entri})
-        else:
-            content = request.POST["content"]
-            util.save_entry(title, content)
-            return show(request, title)
+                return render(request, "encyclopedia/alreadyexists.html", {"entry": entri})
+        content = request.POST["content"]
+        util.save_entry(title, content)
+        return show(request, title)
 
 
 def save_edited(request, entry):
