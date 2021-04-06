@@ -7,7 +7,7 @@
 {% block body %}
 Editing {{title}}
 <br>
-<form method="post" action="save">
+<form method="post" action="save_edited">
     {% csrf_token %}
     {{form}}
     <button type="submit">Save</button>

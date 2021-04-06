@@ -1,1 +1,0 @@
-es un buen lugar para vivir y gozar

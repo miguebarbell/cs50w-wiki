@@ -8,7 +8,9 @@
 results for {{ title | escape }}
 <ul>
 {% for entry in results %}
-<li><a href="wiki/{{entry}}">{{ entry }}</a></li>
+<!--<li><a href="wiki/{{entry}}">{{ entry }}</a></li>-->
+<!--    <li>{{entry}}</li>-->
+    <li><a href="{% url 'show' entry %}">{{ entry }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
