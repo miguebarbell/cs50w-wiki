@@ -7,7 +7,7 @@
 - Search articles.
 - Write articles.
 - Edit articles.
-- 
+
 ####This is a full wikipedia site, what wrote the articles in Markdown language, but the visualization is in HTML.
 use django
 
