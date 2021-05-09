@@ -12,7 +12,7 @@
 use django
 
 ![main](encyclopedia/static/encyclopedia/screenshot.png)
-![main](encyclopedia/static/encyclopedia/screenshotP.png)
+![article](encyclopedia/static/encyclopedia/screenshotP.png)
 
 Demonstration:
 https://youtu.be/zCrqI9SciMg
